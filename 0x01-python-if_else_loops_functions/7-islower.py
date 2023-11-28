@@ -1,3 +1,7 @@
 #!/usr/bin/python3
 def islower(c):
-    return (ord(c) >= 97 amd ord(c) <= 122)
+    if (97 <= ord(c) <= 122):
+        str = True
+    else:
+        str = False
+    return (str)
