@@ -1,70 +1,54 @@
 #!/usr/bin/python3
+"""Standalone module to solve the nqueens problem"""
 
 
 import sys
 
 
-def printBoard(board):
-    if any(1 in x for x in board):
-        print([[idx, board[idx].index(1)] for idx, val in enumerate(board)])
-
-
-def isSafe(row, square, chessboard, N, diag):
-    if chessboard[row][square]:
-        return False
-    if square - diag >= 0 and chessboard[row][square - diag]:
-        return False
-    if square + diag < (N) and chessboard[row][square + diag]:
-        return False
-    if row == 0:
-        return True
-    return isSafe(row - 1, square, chessboard, N, diag + 1)
-
-
-def placeSquare(row, position, chessboard, N):
-    for square in range(position, N):
-        if 1 in chessboard[row]:
-            return 0
-        if not isSafe(row - 1, square, chessboard, N, 1):
-            continue
-        chessboard[row][square] = 1
+def nqueens(size):
+    """Initial setup before recursive call"""
+    if type(size) is not int:
+        print("N must be a number")
         return
-    return 1
+    if size < 4:
+        print("N must be at least 4")
+        return
+    queens = [0] * size
 
+    def printsolution(queens):
+        print("[[0, ", queens[0], "]", sep="", end="")
+        for y, x in enumerate(queens[1:], 1):
+            print(", [", y, ", ", x, "]", sep="", end="")
+        print("]")
+
+    def queencalc(queen):
+        """Recursive call queen position validator"""
+        for x in range(size):
+            """horizontal board positions per queen"""
+            nextx = 0
+            for y in range(queen):
+                qx = queens[y]
+                if x == qx or x + queen == qx + y or x - queen == qx - y:
+                    nextx = 1
+                    break
+            if nextx == 1:
+                nextx == 0
+                continue
+            if queen != size - 1:
+                queens[queen + 1] = 0
+                queens[queen] = x
+                queencalc(queen + 1)
+            else:
+                queens[queen] = x
+                printsolution(queens)
+    queencalc(0)
 
 if len(sys.argv) != 2:
     print("Usage: nqueens N")
-    sys.exit(1)
-
-N = sys.argv[1]
-
-if not str.isdigit(N):
+    exit()
+try:
+    size = int(sys.argv[1])
+except (ValueError, TypeError):
     print("N must be a number")
-    sys.exit(1)
-
-N = int(N)
-
-if N < 4:
-    print("N must be at least 4")
-    sys.exit(1)
-
-queen = 0
-
-while queen != N:
-    chessboard = [[0 for x in range(N)] for x in range(N)]
-    chessboard[0][queen] = 1
-    position = 0
-    row = 1
-    while row < N:
-        if placeSquare(row, position, chessboard, N):
-            row -= 1
-            position = chessboard[row].index(1)
-            chessboard[row][position] = 0
-            position += 1
-            if not row:
-                break
-        else:
-            row += 1
-            position = 0
-    printBoard(chessboard)
-    queen += 1
+    exit()
+nqueens(size)
