@@ -1,0 +1,22 @@
+# Inside test_text_indentation.txt
+# Test case: Testing text_indentation function
+
+>>> def text_indentation(text):
+...     # Your implementation of text_indentation function here
+...     if not isinstance(text, str):
+...         raise TypeError("text must be a string")
+...     text = text.strip()  # Remove leading and trailing spaces
+...     separators = ['.', '?', ':']
+...     for char in text:
+...         print(char, end='')
+...         if char in separators:
+...             print('\n\n', end='')
+
+# Test scenario: Printing text with new lines after ., ? and :
+>>> text_indentation("This is a test. Does it work? Yes: it does.")
+This is a test.
+
+Does it work?
+
+Yes: it does.
+

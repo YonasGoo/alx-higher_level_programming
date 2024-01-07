@@ -1,0 +1,35 @@
+# Inside test_add_integer.txt
+# Test case: Testing add_integer function
+
+>>> def add_integer(a, b=98):
+...     # Your implementation of add_integer function here
+...     if not (isinstance(a, int) or isinstance(a, float)) or not (isinstance(b, int) or isinstance(b, float)):
+...         raise TypeError("a must be an integer or b must be an integer")
+...     a = int(a)
+...     b = int(b)
+...     return a + b
+
+# Test scenario: Adding two integers
+>>> add_integer(5, 3)
+8
+
+# Test scenario: Adding a float and an integer
+>>> add_integer(7.5, 10)
+17
+
+# Test scenario: Adding two floats
+>>> add_integer(4.2, 3.8)
+8
+
+# Test scenario: Adding a non-integer
+>>> add_integer('hello', 3)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer or b must be an integer
+
+# Test scenario: Adding a float and a non-integer
+>>> add_integer(7.5, 'world')
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer or b must be an integer
+

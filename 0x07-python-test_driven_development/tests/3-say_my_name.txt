@@ -1,0 +1,31 @@
+# Inside test_say_my_name.txt
+# Test case: Testing say_my_name function
+
+>>> def say_my_name(first_name, last_name=""):
+...     # Your implementation of say_my_name function here
+...     if not isinstance(first_name, str) or not isinstance(last_name, str):
+...         raise TypeError("first_name must be a string or last_name must be a string")
+...     if last_name:
+...         print(f"My name is {first_name} {last_name}")
+...     else:
+...         print(f"My name is {first_name}")
+
+# Test scenario: Printing name with both first and last name
+>>> say_my_name("John", "Doe")
+My name is John Doe
+
+# Test scenario: Printing name with only first name
+>>> say_my_name("Alice")
+My name is Alice
+
+# Test scenario: Passing non-string for first name
+>>> say_my_name(123, "Smith")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string or last_name must be a string
+
+# Test scenario: Passing non-string for last name
+>>> say_my_name("Emma", 456)
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string or last_name must be a string

@@ -1,0 +1,47 @@
+# Inside test_print_square.txt
+# Test case: Testing print_square function
+
+>>> def print_square(size):
+...     # Your implementation of print_square function here
+...     if not isinstance(size, int):
+...         if isinstance(size, float):
+...             raise TypeError("size must be an integer")
+...         else:
+...             raise TypeError("size must be an integer")
+...     if size < 0:
+...         raise ValueError("size must be >= 0")
+...     for i in range(size):
+...         print("#" * size)
+
+# Test scenario: Printing a square of size 3
+>>> print_square(3)
+###
+###
+###
+
+# Test scenario: Printing a square of size 5
+>>> print_square(5)
+#####
+#####
+#####
+#####
+#####
+
+# Test scenario: Passing a negative size
+>>> print_square(-2)
+Traceback (most recent call last):
+    ...
+ValueError: size must be >= 0
+
+# Test scenario: Passing a non-integer
+>>> print_square(3.5)
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+# Test scenario: Passing a string as size
+>>> print_square("4")
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
