@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 class BaseGeometry:
     def area(self):
-        raise Exception("area() is not implemented")
+        raise NotImplementedError("Subclass must implement area method.")
 
     def integer_validator(self, name, value):
         if not isinstance(value, int):
@@ -9,24 +9,22 @@ class BaseGeometry:
         if value <= 0:
             raise ValueError(f"{name} must be greater than 0")
 
+
 class Rectangle(BaseGeometry):
-    def init(self, width, height):
+    def __init__(self, width, height):
+        self.__width = 0
+        self.__height = 0
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
         self.__width = width
         self.__height = height
-        self.integer_validator("width", self.__width)
-        self.integer_validator("height", self.__height)
 
-    def area(self):
-        return self.width * self.height
-
-    def str(self):
-        return f"[Rectangle] {self.width}/{self.height}"
-
-    def print(self):
-        print(self.str())
 
 class Square(Rectangle):
-    def init(self, size):
+    def __init__(self, size):
+        self.__size = 0
+        self.integer_validator("size", size)
         self.__size = size
-        self.integer_validator("size", self.__size)
-        super().init(size, size)
+
+    def area(self):
+        return self.__size ** 2
