@@ -1,0 +1,25 @@
+# Create an instance of BaseGeometry
+geometry = BaseGeometry()
+
+try:
+    # Test integer_validator with a valid integer
+    geometry.integer_validator("test", 5)
+
+    # Test integer_validator with a non-integer
+    # geometry.integer_validator("test", "hello")  # Uncomment this line to test
+
+    # Test integer_validator with a non-positive integer
+    # geometry.integer_validator("test", 0)  # Uncomment this line to test
+
+except TypeError as e:
+    print(f"TypeError: {e}")
+
+except ValueError as e:
+    print(f"ValueError: {e}")
+
+try:
+    # Test the area method
+    geometry.area()
+
+except Exception as e:
+    print(f"Exception: {e}")

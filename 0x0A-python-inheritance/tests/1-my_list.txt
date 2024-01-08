@@ -1,0 +1,5 @@
+# Create an instance of MyList
+my_list = MyList([4, 2, 7, 1, 5])
+
+# Call the print_sorted method to print the sorted list
+my_list.print_sorted()
