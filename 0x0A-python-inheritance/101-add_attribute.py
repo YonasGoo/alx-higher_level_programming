@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-def add_attribute(obj, attribute, value):
-    if hasattr(obj, "dict") or (hasattr(type(obj), "slots") and attribute in type(obj).slots):
-        setattr(obj, attribute, value)
-    else:
+def add_attribute(obj, attr, value):
+    if not hasattr(obj, "__dict__") and not hasattr(type(obj), "__slots__"):
         raise TypeError("can't add new attribute")
+    setattr(obj, attr, value)
