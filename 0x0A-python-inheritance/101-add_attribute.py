@@ -1,13 +1,11 @@
 #!/usr/bin/python3
-# -*- coding: UTF-8 -*-
-"""
-101-add_attribute.py: Can I?
-"""
+"""Defines a function that safely adds attributes to an object"""
 
 
-def add_attribute(self, name, new):
-    """function that adds a new attribute to an object if its possible"""
+def add_attribute(obj, name, value):
+    if type(name) is not str:
+        raise TypeError("can't add new attribute")
     try:
-        self.name = new
-    except AttributeError:
+        exec("obj.{} = value".format(name))
+    except:
         raise TypeError("can't add new attribute")
