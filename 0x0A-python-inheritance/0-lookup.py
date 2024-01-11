@@ -3,5 +3,4 @@
 
 
 def lookup(obj):
-    attributes_methods = dir(obj)
-    return list(attributes_methods)
+    return dir(obj)
