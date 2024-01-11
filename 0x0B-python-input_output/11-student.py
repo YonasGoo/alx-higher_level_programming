@@ -13,7 +13,7 @@ class Student:
     def to_json(self, attrs=None):
         """Returns student's serializable dict elements as a dict"""
         filterattr = 0
-        if type(attrs) == list:
+        if type(attrs) is list:
             filterattr = 1
             for x in attrs:
                 if type(x) is not str:
