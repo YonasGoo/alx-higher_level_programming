@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-"""Defines a function that safely adds attributes to an object"""
+"""adds new attribute if possible"""
 
 
-def add_attribute(obj, name, value):
-    if type(name) is not str:
+def add_attribute(obj, attr, value):
+    """adds new attribute"""
+    if('__slots__' in dir(obj) or '__dict__' not in dir(obj) or
+       hasattr(obj, attr)):
         raise TypeError("can't add new attribute")
-    try:
-        exec("obj.{} = value".format(name))
-    except AttributeError:
-        raise TypeError("can't add new attribute")
+    setattr(obj, attr, value)
