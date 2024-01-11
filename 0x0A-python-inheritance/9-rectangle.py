@@ -1,19 +1,17 @@
 #!/usr/bin/python3
-class BaseGeometry:
-    def area(self):
-        raise NotImplementedError("Subclass must implement area method.")
+# -*- coding: UTF-8 -*-
+"""
+9-base_geometry.py: Geometry module
+"""
 
-    def integer_validator(self, name, value):
-        if not isinstance(value, int):
-            raise TypeError(f"{name} must be an integer")
-        if value <= 0:
-            raise ValueError(f"{name} must be greater than 0")
+
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
+    """class Rectangle that inherits from BaseGeometry"""
     def __init__(self, width, height):
-        self.__width = 0
-        self.__height = 0
+        """Instantiation with width and height"""
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         self.__width = width
@@ -23,4 +21,4 @@ class Rectangle(BaseGeometry):
         return self.__width * self.__height
 
     def __str__(self):
-        return f"[Rectangle] {self.__width}/{self.__height}"
+        return ("[Rectangle] "+str(self.__width)+"/"+str(self.__height))

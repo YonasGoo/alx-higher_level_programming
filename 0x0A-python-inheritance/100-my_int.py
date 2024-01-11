@@ -1,7 +1,14 @@
 #!/usr/bin/python3
-class MyInt(int):
-    def reb(self, other):
-        return super().rev(other)
+# -*- coding: UTF-8 -*-
+"""
+100-my_int.py: My integer
+"""
 
-    def rev(self, other):
-        return super.reb(other)
+
+class MyInt(int):
+    """class MyInt that inherits from int"""
+    def __eq__(self, other):
+        return False
+
+    def __ne__(self, other):
+        return True
