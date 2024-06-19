@@ -1,6 +1,4 @@
 #!/usr/bin/node
-const { argv } = process;
-
 if (process.argv.length === 2) {
 	console.log('No argument');
 	process.exit(1);
