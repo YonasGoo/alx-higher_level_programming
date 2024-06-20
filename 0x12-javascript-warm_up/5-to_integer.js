@@ -1,6 +1,6 @@
 #!/usr/bin/node
 function convertNum(value) {
-	let num = Number(value);
+	let num = parseInt(value);
 	if (isNaN(num)) {
 		console.log('Not a Number');
 	} else {
