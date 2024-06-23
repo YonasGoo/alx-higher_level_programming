@@ -1,15 +1,16 @@
 #!/usr/bin/python3
-# sql alchemy awesome
-from sqlalchemy import Column, Integer, String
+"""Select all states in hbtn_0e_0_usa"""
+
+
+from sqlalchemy import Integer, String, Column
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
 
 class State(Base):
-    # creates state
-    __tablename__ = 'states'
+    """Class to states table"""
+    __tablename__ = "states"
 
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(128), nullable=False)
