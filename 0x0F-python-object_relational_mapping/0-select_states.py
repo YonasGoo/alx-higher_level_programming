@@ -1,23 +1,15 @@
 #!/usr/bin/python3
-# gets all states via python yee boi
-
-
-def main(args):
-    # gets all state stuff
-    if len(args) != 4:
-        raise Exception("need 3 arguments!")
-    db = MySQLdb.connect(host='localhost',
-                         user=args[1],
-                         passwd=args[2],
-                         db=args[3])
-    cur = db.cursor()
-    cur.execute("SELECT * FROM states ORDER BY id ASC")
-    states = cur.fetchall()
-    for state in states:
-        print(state)
+"""List all states using mysqldb"""
 
 
 if __name__ == "__main__":
-    import sys
     import MySQLdb
-    main(sys.argv)
+    from sys import argv
+
+    db = MySQLdb.connect(host="localhost", user=argv[1],
+                         passwd=argv[2], db=argv[3])
+
+    cur = db.cursor()
+    cur.execute("SELECT id, name FROM states")
+    for row in cur.fetchall():
+        print("({}, '{}')".format(row[0], row[1]))
